@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sectionProyects.insertAdjacentHTML('beforeend', '<ul></ul>');
             }
             const listaProyectos = document.querySelector('#projects ul');
-            
+
             nuevoProyecto += `<li>`;
             nuevoProyecto += `<h3>${nombreProyecto}</h3>`;
             nuevoProyecto += `<img src="${URL.createObjectURL(inputImagen)}" alt="${nombreProyecto}">`;
@@ -41,7 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
             nuevoProyecto += `</li>`;
 
             listaProyectos.insertAdjacentHTML('beforeend', nuevoProyecto);
+            addclass();
             document.getElementById('admin-panel').remove();
         };
     };
 });
+
+function addclass() {
+    const ListaP = document.querySelectorAll('#projects ul li');
+    ListaP.forEach((item, index) => {
+    if(!item.className){
+        item.classList.add('proyecto-' + (index + 1));
+    }
+    });
+}
