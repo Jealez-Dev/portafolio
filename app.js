@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sectionProyects.insertAdjacentHTML('beforeend', '<ul></ul>');
             }
             const listaProyectos = document.querySelector('#projects ul');
+            
             nuevoProyecto += `<li>`;
             nuevoProyecto += `<h3>${nombreProyecto}</h3>`;
             nuevoProyecto += `<img src="${URL.createObjectURL(inputImagen)}" alt="${nombreProyecto}">`;
