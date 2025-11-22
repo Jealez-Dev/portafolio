@@ -3,23 +3,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('App inicializada correctamente');
 
-    console.log('Iniciando fetch...');
-
-    const updatehour = () => {
-        fetch('/api/hora')
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                const messageElement = document.getElementById('api-message');
-                if (messageElement) {
-                    messageElement.textContent = `${data.mensaje} - Hora: ${data.hora}`;
-                }
-            })
-            .catch(error => console.error('Error al obtener datos:', error));
-    };
-
-    setInterval(updatehour, 1000);
+    console.log('Cargando proyectos');
+    loadProjects();
 
     document.querySelector('#admin-button button').onclick = () => {
         let contenido = "";
@@ -59,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nuevoProyecto += `</li>`;
 
             listaProyectos.insertAdjacentHTML('beforeend', nuevoProyecto);
+            uploadProject();
             addclass();
             document.getElementById('admin-panel').remove();
         };
@@ -73,6 +59,48 @@ function addclass() {
             item.classList.add('proyecto-' + (index + 1));
         }
     });
+}
+
+async function loadProjects() {
+    const response = await fetch('/proyectos');
+    const data = await response.json();
+
+    const ListaP = document.querySelector('#projects ul')
+
+    data.forEach((data) => {
+        let addproyect = `<li>`
+        addproyect += `<h3>${data.name_project}</h3>`
+        addproyect += `<img src="${data.url_img}" alt="${data.name_project}">`
+        console.log(data.url_img)
+        addproyect += `<p>${data.description_project}</p>`
+        addproyect += `</li>`
+
+        ListaP.insertAdjacentHTML('beforeend', addproyect)
+    })
+
+    addclass()
+}
+
+async function uploadProject() {
+
+    const formdata = new FormData();
+    formdata.append('img', document.querySelector('#subir-imgen').files[0]);
+    formdata.append('name_project', document.querySelector('#Nombre-proyecto').value);
+    formdata.append('description_project', document.querySelector('#Descripcion-proyecto').value);
+
+    const response = await fetch('/proyectos1', {
+        method: 'POST',
+        body: formdata
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+        alert(data.mensaje);
+    } else {
+        alert(data.error);
+    }
+
 }
 
 

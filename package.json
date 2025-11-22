@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@elysiajs/static": "^1.4.7",
+    "@supabase/supabase-js": "^2.84.0",
     "elysia": "^1.4.16"
   }
 }
