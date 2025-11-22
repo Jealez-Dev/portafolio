@@ -1,16 +1,5 @@
 import { Elysia } from 'elysia'
-import { staticPlugin } from '@elysiajs/static'
-import { prueba } from './server/api/prueba.js'
-import { proyectos } from './server/api/supabase.js'
-
-import { join } from 'path'
-
 const app = new Elysia()
-    .use(staticPlugin({
-        assets: 'public',
-        prefix: '/'
-    }))
-    .get('/', () => Bun.file(join(process.cwd(), 'public/index.html')))
     .use(prueba)
     .use(proyectos)
 

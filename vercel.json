@@ -1,7 +1,15 @@
 {
     "rewrites": [
         {
-            "source": "/(.*)",
+            "source": "/proyectos",
+            "destination": "/index.js"
+        },
+        {
+            "source": "/proyectos1",
+            "destination": "/index.js"
+        },
+        {
+            "source": "/prueba",
             "destination": "/index.js"
         }
     ]
