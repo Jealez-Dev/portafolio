@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "dev": "bun run --hot index.js",
-    "start": "bun run index.js"
+    "dev": "bun run --hot server/server.js",
+    "start": "bun run server/server.js"
   },
   "dependencies": {
     "@elysiajs/static": "^1.4.7",
