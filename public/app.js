@@ -71,7 +71,6 @@ async function loadProjects() {
         let addproyect = `<li>`
         addproyect += `<h3>${data.name_project}</h3>`
         addproyect += `<img src="${data.url_img}" alt="${data.name_project}">`
-        console.log(data.url_img)
         addproyect += `<p>${data.description_project}</p>`
         addproyect += `</li>`
 

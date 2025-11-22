@@ -3,7 +3,7 @@ import { staticPlugin } from '@elysiajs/static'
 import { prueba } from './api/prueba.js'
 import { proyectos } from './api/supabase.js'
 
-new Elysia()
+const app = new Elysia()
     .use(staticPlugin({
         assets: 'public',
         prefix: '/'
@@ -12,6 +12,9 @@ new Elysia()
     .use(prueba)
     .use(proyectos)
 
-    .listen(3000)
+export default app
 
-console.log('🦊 Servidor corriendo en http://localhost:3000')
+if (import.meta.main) {
+    app.listen(3000)
+    console.log('🦊 Servidor corriendo en http://localhost:3000')
+}

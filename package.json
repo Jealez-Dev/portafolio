@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "dev": "bun run --hot server/server.js",
+    "start": "bun run server/server.js"
+  },
   "dependencies": {
     "@elysiajs/static": "^1.4.7",
     "@supabase/supabase-js": "^2.84.0",
