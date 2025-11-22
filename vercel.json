@@ -2,15 +2,15 @@
     "rewrites": [
         {
             "source": "/proyectos",
-            "destination": "/index.js"
+            "destination": "/api/index.js"
         },
         {
             "source": "/proyectos1",
-            "destination": "/index.js"
+            "destination": "/api/index.js"
         },
         {
             "source": "/prueba",
-            "destination": "/index.js"
+            "destination": "/api/index.js"
         }
     ]
 }
